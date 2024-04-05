@@ -209,18 +209,18 @@ Examples
 ["AD", "4S", "7H", "KS", "10S"] ==> false
 */
 
-function checkIfFlush($cards)
-{
-  var_dump($cards);
-  $cards_values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
-  $suits = [ 'H','S','D','C'];
-  $user_cards_suits = [];
+function checkIfFlush($cards){
+  //inserisco il seme della prima carta
+  $suits = $cards[0][-1];
+  $count_same_suits = 0;
+  //ciclo su tutte le carte, se hanno lo stesso seme di quella che c'è già le sommo
   foreach($cards as $card){
-    $user_cards_suits[]= $card[-1];
+    if($suits== $card[-1]){
+      $count_same_suits++;
+    }
   }
-  $different_suits = array_diff($suits, $user_cards_suits);
-  var_dump($different_suits);
-  if(!empty($different_suits)){
+  //se il conto arriva a 5, la combinazione flush è vera
+  if($count_same_suits == 5){
     return true;
   }else{
     return false;
