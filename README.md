@@ -39,3 +39,15 @@ This class should support the following methods, all of which should be chainabl
 - ```rollback()``` - return the MAJOR, MINOR, and PATCH to their values before the previous major/minor/patch call, or throw an exception with the message```"Cannot rollback!"``` if there's no version to roll back to. Multiple calls to rollback() should be possible and restore the version history
 - ```release()``` - return a string in the format ```"{MAJOR}.{MINOR}.{PATCH}"```
 May the binary force be with you!
+
+
+### Snack 4
+The code provided is supposed replace all the dots```"."``` in the specified String str with dashes ```"-"```
+
+But it's not working properly.
+
+Task
+Fix the bug so we can all go home early.
+
+Notes
+String str will never be null.
