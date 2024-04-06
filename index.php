@@ -102,10 +102,10 @@ class VersionManager
   public $history = [];
   //public $fail = 'Error occured while parsing version!';
   
-  public function __construct($string = '0.0.1')
+  public function __construct($string = null)
   {
     var_dump($string);
-    if(empty($string)){
+    if(empty($string) || is_null($string)){
         $string = '0.0.1';
         //throw new Exception('Error occured while parsing version!');
     }
@@ -136,6 +136,7 @@ class VersionManager
     $this->major++;
     $this->minor = 0;
     $this->patch = 0;
+    return $this;
     
     
   }
@@ -144,12 +145,14 @@ class VersionManager
     $this->history[] = $this->release();
     $this->minor++;
     $this->patch = 0;
+     return $this;
     
   }
    public function patch()
   {
     $this->history[] = $this->release();
     $this->patch++;
+     return $this;
     
   }
   public function rollback()
@@ -165,6 +168,7 @@ class VersionManager
     $this->minor = $last_element[2];
     $this->patch = $last_element[4];
     array_pop($this->history);
+    return $this;
 
   }
   public function release()
